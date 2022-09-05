@@ -1,21 +1,30 @@
 public class Printer {
 
-    private int sheetsLeft;
+    private int sheets;
+    private int toner;
 
-
-    public Printer (int sheetsLeft) {
-        this.sheetsLeft = sheetsLeft;
+    public Printer (int sheets, int toner) {
+        this.sheets = sheets;
+        this.toner = toner;
     }
 
-    public int printPaper(int copies, int pages) {
-        int sheets = copies * pages;
+    public int getSheets() {
+        return this.sheets;
+    }
 
-        if (this.sheetsLeft >= sheets) {
-            this.sheetsLeft -= sheets;
-            return boolean true;
+    public int getToner() {
+        return this.toner;
+    }
+
+
+    public boolean printPaper(int numPages, int numCopies) {
+        if (this.sheets >= numPages * numCopies) {
+            this.sheets -= (numPages * numCopies);
+            this.toner -= 1 * (numPages * numCopies);
+            return true;
+        } else {
+            return false;
         }
-
-
 
     }
 
